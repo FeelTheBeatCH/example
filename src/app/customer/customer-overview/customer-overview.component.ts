@@ -38,9 +38,10 @@ export class CustomerOverviewComponent implements OnInit, OnDestroy {
       this.filteredCustomers = this.customers;
       return;
     }
+    const loweredValue = value.toLowerCase();
     this.filteredCustomers = this.customers.filter(customer => {
       for (const key in customer) {
-        if (customer[key].toLowerCase().includes(value.toLowerCase())) {
+        if (customer[key].toLowerCase().includes(loweredValue)) {
           return true;
         }
       }
