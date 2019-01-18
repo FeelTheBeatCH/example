@@ -39,13 +39,15 @@ export class CustomerOverviewComponent implements OnInit, OnDestroy {
       return;
     }
     const loweredValue = value.toLowerCase();
-    this.filteredCustomers = this.customers.filter(customer => {
-      for (const key in customer) {
-        if (customer[key].toLowerCase().includes(loweredValue)) {
-          return true;
+    this.filteredCustomers = this.customers.filter(
+      customer => {
+        for (const key in customer) {
+          if (customer[key].toLowerCase().includes(loweredValue)) {
+            return true;
+          }
         }
+        return false;
       }
-      return false;
-    });
+    );
   }
 }
