@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CustomerService} from '../customer.service';
 import {Subscription} from 'rxjs';
 
@@ -7,11 +7,11 @@ import {Subscription} from 'rxjs';
   templateUrl: './customer-overview.component.html',
   styleUrls: ['./customer-overview.component.scss']
 })
-export class CustomerOverviewComponent implements OnInit {
-  private customers: CustomerModel[];
+export class CustomerOverviewComponent implements OnInit, OnDestroy {
+  private customers: CustomerModel[] = [];
   public filteredCustomers: CustomerModel[] = [];
   public filterValue: string;
-  private streams: Subscription;
+  private stream: Subscription;
 
   constructor(private customerService: CustomerService) {
   }
@@ -20,8 +20,12 @@ export class CustomerOverviewComponent implements OnInit {
     this.loadCustomers();
   }
 
+  ngOnDestroy() {
+    this.stream.unsubscribe();
+  }
+
   private loadCustomers() {
-    this.streams = this.customerService.loadCustomersStrem().subscribe(
+    this.stream = this.customerService.loadCustomersStrem().subscribe(
       customers => {
         this.customers = customers;
         this.filter();
