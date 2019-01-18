@@ -1,0 +1,11 @@
+.card {
+  text-align: left;
+  padding: 5px;
+  margin: 10px 10px 10px 0;
+  min-width: 100px;
+  min-height: 100px;
+}
+
+.card + .card{
+  margin-left: 10px
+}

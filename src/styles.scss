@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+  font-family: Arial, sans-serif;
+}
+
+.btn-primary, input {
+  border: solid 1px gray;
+  border-radius: 3px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+  &:focus, &:hover {
+    border-color: cornflowerblue;
+    box-shadow: 0 0 3px cornflowerblue;
+  }
+}
+
+.element-group {
+  * {
+    border-radius: 0;
+  }
+  :first-child {
+    border-radius: 3px 0 0 3px;
+  }
+  :last-child {
+    border-radius: 0 3px 3px 0;
+  }
+}

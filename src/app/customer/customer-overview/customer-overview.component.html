@@ -1,0 +1,13 @@
+<h2>cussomers</h2>
+<div class="element-group">
+  <input title="filter" [(ngModel)]="filterValue" (keyup.enter)="filter(filterValue)">
+  <button title="search" class="btn-primary" (click)="filter(filterValue)">search</button>
+</div>
+<div class="customer-container">
+  <app-cards *ngFor="let customer of filteredCustomers">
+    <div>{{customer.firstName}}</div>
+    <div>{{customer.name}}</div>
+    <div>{{customer.street}}</div>
+    <div>{{customer.plz}} {{customer.place}}</div>
+  </app-cards>
+</div>
